@@ -1,0 +1,63 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\59172\\OneDrive\\Pictures\\Saved Pictures\\Archv1\\GAME DEV\\AUTOAPRENDIZAJE\\GAME\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|c:\\users\\59172\\onedrive\\pictures\\saved pictures\\archv1\\game dev\\autoaprendizaje\\game\\assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\59172\\OneDrive\\Pictures\\Saved Pictures\\Archv1\\GAME DEV\\AUTOAPRENDIZAJE\\GAME\\Assets\\01_Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\59172\\OneDrive\\Pictures\\Saved Pictures\\Archv1\\GAME DEV\\AUTOAPRENDIZAJE\\GAME\\Assets\\01_Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Player.cs",
+              "ViewState": "AQIAAFwAAAAAAAAAAAAmwH8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:10:59.082Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 139,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

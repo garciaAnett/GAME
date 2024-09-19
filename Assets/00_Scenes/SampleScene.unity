@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 150173522}
   - component: {fileID: 150173519}
   - component: {fileID: 150173521}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150173518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.98, y: -3.61, z: 0}
+  m_LocalPosition: {x: -0.24, y: -3.54, z: -0.28}
   m_LocalScale: {x: 0.12000001, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -245,6 +245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164bb822f7eba0448895c330dda6cbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &195846171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 900655698003414712, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
+  m_PrefabInstance: {fileID: 900655698105671445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &235196997
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +332,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &292304880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292304881}
+  m_Layer: 6
+  m_Name: point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &292304881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292304880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 195846171}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &393393139
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491154322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.48, y: -2.88, z: 0}
+  m_LocalPosition: {x: 10.48, y: -2.88, z: -0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -624,7 +659,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -667,7 +702,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -691,7 +726,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -708,7 +743,7 @@ GameObject:
   - component: {fileID: 775137662}
   - component: {fileID: 775137659}
   - component: {fileID: 775137661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pinchos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,8 +809,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775137658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.55, y: -3.59, z: 0}
-  m_LocalScale: {x: 0.10096408, y: 0.2, z: 1}
+  m_LocalPosition: {x: -5.55, y: -3.59, z: -0.28}
+  m_LocalScale: {x: 0.12, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -940,9 +975,9 @@ GameObject:
   - component: {fileID: 1796383785}
   - component: {fileID: 1796383784}
   - component: {fileID: 1796383783}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1068,7 +1103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796383782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.534812, y: -3.38, z: 0}
+  m_LocalPosition: {x: 5.534812, y: -3.38, z: -0.28}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1095,15 +1130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414712, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.09
+      value: -8.09
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414712, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.43
+      value: -3.39
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414712, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414712, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1133,13 +1168,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 900655698003414713, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 292304881}
     - target: {fileID: 900655698003414717, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414717, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 900655698003414717, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 900655698003414718, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_Size.x
@@ -1156,6 +1199,14 @@ PrefabInstance:
     - target: {fileID: 900655698003414718, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
       propertyPath: m_MaskInteraction
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900655698003414719, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900655698003414719, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d487021e08d2d4044aa94e80aff5de3c, type: 3}
