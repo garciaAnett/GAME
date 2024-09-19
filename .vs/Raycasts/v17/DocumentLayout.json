@@ -1,0 +1,112 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\59172\\Downloads\\Raycasts\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|c:\\users\\59172\\downloads\\raycasts\\assets\\01_scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|C:\\Users\\59172\\Downloads\\Raycasts\\assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|C:\\Users\\59172\\Downloads\\Raycasts\\assets\\01_scripts\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|C:\\Users\\59172\\Downloads\\Raycasts\\assets\\01_scripts\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D002A538-F1FB-E586-E290-4375BF446A3F}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Obstacle.cs",
+              "DocumentMoniker": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Obstacle.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Obstacle.cs",
+              "ToolTip": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Obstacle.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Obstacle.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T03:44:50.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Flag.cs",
+              "DocumentMoniker": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Flag.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Flag.cs",
+              "ToolTip": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Flag.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Flag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T03:27:10.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Enemy.cs",
+              "ToolTip": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Enemy.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Enemy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T03:22:09.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Player.cs",
+              "ToolTip": "C:\\Users\\59172\\Downloads\\Raycasts\\Assets\\01_Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Player.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAiwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T23:51:30.946Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 139,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

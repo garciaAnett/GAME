@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Floor
-  - EnemyBullet
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -43,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fondo
+    uniqueID: 344102161
     locked: 0

@@ -1,104 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 
 public class Player : MonoBehaviour
 {
-    public float damage = 1f;
-    public float speed = 2f;
-    public float timeBtwShoot = 1.5f;
-    public int ammo = 10;
-    int currentAmmo;
-    float life = 60;
-    public float maxLife = 60;
-    float timer = 0;
-    bool canShoot = true;
-    public Rigidbody2D rb;
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public Bullet prefab;
-    public float bulletSpeed = 5f;
-    public ParticleSystem particle;
-    
-    public Image lifebar;
+    public float speed = 5f; // Velocidad de movimiento
+    public float jumpForce = 7f; // Fuerza del salto
+    public bool isGrounded; // Verifica si el personaje está en el suelo
+    private Rigidbody2D rb; // Referencia al Rigidbody2D
 
-
+    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Inició el juego");
-        currentAmmo = ammo;
-        life=maxLife;
-
-        lifebar.fillAmount = life/maxLife; 
+        rb = GetComponent<Rigidbody2D>(); // Inicializamos el Rigidbody2D
     }
 
+    // Update is called once per frame
     void Update()
     {
-        
-        Movement();
-        Reload();
-        CheckIfCanShoot();
-        Shoot();
-       
+        MovePlayer(); // Método para movimiento
+        Jump(); // Método para salto
     }
 
-    void Movement()
+    // Método para movimiento con teclas A y D
+    void MovePlayer()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(x, y) * speed;
+        float moveInput = Input.GetAxis("Horizontal"); // Obtiene input de teclas A y D o Flechas Izq/Der
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y); // Mueve al personaje
     }
 
-    void Shoot()
+    // Método para el salto con la barra espaciadora
+    void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && canShoot && currentAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Bullet b = Instantiate(prefab, firePoint.position, transform.rotation);
-            b.damage= damage;
-            b.speed = bulletSpeed;
-         //   currentAmmo--;
-            canShoot = false;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Aplica fuerza de salto
         }
     }
 
-    void Reload()
+    // Método para verificar si el personaje está en el suelo
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(currentAmmo == 0 && Input.GetKeyDown(KeyCode.R))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            currentAmmo = ammo;
+            isGrounded = true;
         }
     }
 
-    void CheckIfCanShoot()
+    void OnCollisionExit2D(Collision2D collision)
     {
-        if (timer < timeBtwShoot)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            timer = 0;
-            canShoot = true;
+            isGrounded = false;
         }
     }
-
-    public void TakeDamage(float dmg)
-    {
-            life -= dmg;
-          
-            lifebar.fillAmount = life / maxLife;
-            if (life <= 0)
-            {
-                Destroy(gameObject);
-                Instantiate(particle, transform.position, Quaternion.identity);
-              
-            }
-        
-    }
-  
-
 }
