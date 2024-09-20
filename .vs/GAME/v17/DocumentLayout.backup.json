@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\compartidos\\GAME (1)\\GAME\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|D:\\compartidos\\GAME (1)\\GAME\\assets\\01_scripts\\controller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\controller2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|D:\\compartidos\\GAME (1)\\GAME\\assets\\01_scripts\\raycastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\raycastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|d:\\compartidos\\game (1)\\game\\assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|D:\\compartidos\\GAME (1)\\GAME\\assets\\01_scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|D:\\compartidos\\GAME (1)\\GAME\\assets\\01_scripts\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\flag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|D:\\compartidos\\GAME (1)\\GAME\\assets\\01_scripts\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{599DF7C7-BC70-F51E-9182-D6E2C141F7B8}|Assembly-CSharp.csproj|solutionrelative:assets\\01_scripts\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RaycastController.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\RaycastController.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\RaycastController.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\RaycastController.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\RaycastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T23:46:11.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Controller2D.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Controller2D.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Controller2D.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Controller2D.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Controller2D.cs",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAAANgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T23:46:24.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Obstacle.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Obstacle.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Obstacle.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Obstacle.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Obstacle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T21:11:47.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Flag.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Flag.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Flag.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Flag.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Flag.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T21:11:45.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Enemy.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Enemy.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Enemy.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T21:11:41.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\01_Scripts\\Player.cs",
+              "ToolTip": "D:\\compartidos\\GAME (1)\\GAME\\Assets\\01_Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\01_Scripts\\Player.cs",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAswMQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:10:59.082Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
