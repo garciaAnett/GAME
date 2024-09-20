@@ -53,11 +53,14 @@
     <UnityVersion>2020.3.48f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\01_Scripts\Enemy.cs" />
+    <Compile Include="Assets\01_Scripts\Controller2D.cs" />
+    <Compile Include="Assets\01_Scripts\CameraFollow.cs" />
     <Compile Include="Assets\01_Scripts\Flag.cs" />
+    <Compile Include="Assets\01_Scripts\RaycastController.cs" />
     <Compile Include="Assets\01_Scripts\Obstacle.cs" />
     <Compile Include="Assets\01_Scripts\Player.cs" />
   </ItemGroup>

@@ -1,130 +1,196 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Controller2D))]
 public class Player : MonoBehaviour
 {
-    public float speed = 5f; // Velocidad de movimiento
-    public float jumpForce = 7f; // Fuerza del salto
-    public bool isGrounded; // Verifica si el personaje está en el suelo
-    private Rigidbody2D rb; // Referencia al Rigidbody2D
-    public Transform firePoint;
-   
-    // Raycast settings
-    public float longDistance = 10f;  // Long distance range
-    public float shortDistance = 3f;  // Short distance range
-    public LayerMask enemyLayer;      // Layer for enemies
-    public float raycastDistance = 10f; // para los rayos de 360 grados
- 
+    // Parámetros de movimiento del jugador
+    public float maxJumpHeight = 4;  // Altura máxima que puede alcanzar el jugador al saltar
+    public float minJumpHeight = 1;  // Altura mínima al hacer un salto corto
+    public float timeToJumpApex = .4f;  // Tiempo que tarda el jugador en llegar al punto más alto del salto
+    float accelerationTimeAirborne = .2f;  // Tiempo de aceleración mientras el jugador está en el aire
+    float accelerationTimeGrounded = .1f;  // Tiempo de aceleración mientras el jugador está en el suelo
+    float moveSpeed = 6;  // Velocidad de movimiento del jugador en el eje X
+
+    // Parámetros para el salto en paredes
+    public Vector2 wallJumpClimb;  // Fuerza aplicada cuando el jugador escala una pared durante un salto
+    public Vector2 wallJumpOff;  // Fuerza aplicada cuando el jugador se separa de la pared en un salto
+    public Vector2 wallLeap;  // Fuerza aplicada al hacer un salto largo desde una pared
+
+    public float wallSlideSpeedMax = 3;  // Velocidad máxima al deslizarse por una pared
+    public float wallStickTime = .25f;  // Tiempo durante el cual el jugador se queda pegado a la pared antes de poder moverse
+    float timeToWallUnstick;  // Tiempo restante antes de que el jugador pueda despegarse de la pared
+
+    // Parámetros relacionados con la gravedad y el salto
+    float gravity;  // Valor de la gravedad aplicado al jugador
+    float maxJumpVelocity;  // Velocidad máxima de salto
+    float minJumpVelocity;  // Velocidad mínima para un salto pequeño
+    Vector3 velocity;  // Vector que guarda la velocidad actual del jugador
+    float velocityXSmoothing;  // Suavizado de la velocidad en el eje X para hacer el movimiento más fluido
+
+    Controller2D controller;  // Referencia al componente que controla las colisiones del jugador
+
+    // Parámetros para la detección de enemigos con raycasts
+    public Transform firePoint;  // Punto desde donde se originan los rayos para la detección de enemigos
+    public float longDistance = 10f;  // Distancia larga para la detección de enemigos
+    public float shortDistance = 3f;  // Distancia corta para la detección de enemigos
+    public LayerMask enemyLayer;  // Capa a la que pertenecen los enemigos
+    public float raycastDistance = 10f;  // Distancia máxima a la que se disparan los rayos
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); // Inicializamos el Rigidbody2D
-      
-        enemyLayer = LayerMask.GetMask("Enemy");
+        // Inicialización del componente y cálculos iniciales
+        controller = GetComponent<Controller2D>();
+
+        // Calcular la gravedad y las velocidades de salto según la altura máxima y mínima del salto
+        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+        maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+        minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        print("Gravity: " + gravity + "  Jump Velocity: " + maxJumpVelocity);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        MovePlayer(); // Método para movimiento
-        Jump(); // Método para salto
-     // DetectEnemiesBackForward();  // Utiliza el método DetectEnemies para manejar los raycasts
+        // Obtener la entrada del usuario para movimiento horizontal y vertical
+        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        int wallDirX = (controller.collisions.left) ? -1 : 1;  // Determinar la dirección en la que el jugador está tocando una pared
+
+        // Suavizar el movimiento horizontal usando interpolación, dependiendo de si el jugador está en el suelo o en el aire
+        float targetVelocityX = input.x * moveSpeed;
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
+                    (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+
+        // Detección de enemigos usando raycast en 360 grados
         DetectEnemies360();
-    }
 
+        // Manejar el deslizamiento en paredes y los saltos
+        HandleWallSliding(input, wallDirX);
+        HandleJumping(input, wallDirX);
 
-    // Método para movimiento con teclas A y D
-    void MovePlayer()
-    {
-        float moveInput = Input.GetAxis("Horizontal"); // Obtiene input de teclas A y D o Flechas Izq/Der
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y); // Mueve al personaje
-    }
+        // Actualizar la velocidad vertical aplicando gravedad y mover al jugador
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime, input);
 
-    // Método para el salto con la barra espaciadora
-    void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // Reiniciar la velocidad vertical si el jugador colisiona con algo arriba o abajo
+        if (controller.collisions.above || controller.collisions.below)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Aplica fuerza de salto
+            velocity.y = 0;
         }
     }
 
-    // Método para verificar si el personaje está en el suelo
-    void OnCollisionEnter2D(Collision2D collision)
+    // Función para manejar el deslizamiento en paredes
+    void HandleWallSliding(Vector2 input, int wallDirX)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        bool wallSliding = false;
+        // Si el jugador está tocando una pared y no está en el suelo, activar el deslizamiento
+        if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
         {
-            isGrounded = true;
-        }
-    }
+            wallSliding = true;
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-        }
-    }
-    void DetectEnemiesBackForward() // Este es un metodo que se genera una 1 linea horizontal donde indicando si el enemigo esta cerca o no
-    {                               // se uso un firepoint para simplificar el trabajo
-                                    // indicandole la distancia y usando layer mask señalamos al enemigo.
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, longDistance, enemyLayer);
-        if (hit.collider != null)
-        {
-            Debug.Log("Enemigo detectado: " + hit.collider.name);
-            float distanceToEnemy = Vector2.Distance(firePoint.position, hit.collider.transform.position);
-            if (distanceToEnemy <= shortDistance)
-            {                   //inicio           fin          color    duracion
-                Debug.DrawLine(firePoint.position, hit.point, Color.red, 1f);  // Visible por 1 segundo la linea generada
-            }
-            else
+            // Limitar la velocidad de deslizamiento
+            if (velocity.y < -wallSlideSpeedMax)
             {
-                Debug.DrawLine(firePoint.position, hit.point, Color.green, 1f);  // Visible por 1 segundo
+                velocity.y = -wallSlideSpeedMax;
             }
-        }
-        else
-        {   // de la misma manera funciona solo que mutiplicamos con longdistance para determinar su distancia y generar la linea blanca
-            Vector3 endRaycast = firePoint.position + firePoint.right * longDistance;
-            Debug.DrawLine(firePoint.position, endRaycast, Color.white, 1f);  // Visible por 1 segundo
-        }
-    }
 
-    void DetectEnemies360()
-    {
-        int numberOfRays = 8; // Cantidad de rayos, más rayos significa una cobertura más precisa pero más coste computacional
-        float angleStep = 360f / numberOfRays; // Calcula el paso de cada ángulo
-
-        for (int i = 0; i < numberOfRays; i++)
-        {
-            float angle = i * angleStep * Mathf.Deg2Rad; // Convierte el ángulo a radianes
-            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, direction, raycastDistance, enemyLayer);
-
-            if (hit.collider != null)
+            // Controlar el tiempo que el jugador permanece pegado a la pared antes de despegarse
+            if (timeToWallUnstick > 0)
             {
-                // Calcular la distancia entre firePoint y el enemigo
-                float distanceToEnemy = Vector2.Distance(firePoint.position, hit.point);
+                velocityXSmoothing = 0;
+                velocity.x = 0;
 
-                // Si la distancia es menor o igual a 2f, la línea será roja
-                if (distanceToEnemy <= 2f)
+                if (input.x != wallDirX && input.x != 0)
                 {
-                    Debug.DrawLine(firePoint.position, hit.point, Color.red, 0f); // Dibuja línea roja si el enemigo está cerca
+                    timeToWallUnstick -= Time.deltaTime;
                 }
                 else
                 {
-                    Debug.DrawLine(firePoint.position, hit.point, Color.yellow, 0f); // Dibuja línea amarilla si el enemigo está lejos
+                    timeToWallUnstick = wallStickTime;
                 }
-
-                // Puedes también usar Debug.Log para ver la distancia
-                // Debug.Log("Distancia al enemigo: " + distanceToEnemy);
             }
             else
             {
-                Debug.DrawLine(firePoint.position, firePoint.position + (Vector3)(direction * raycastDistance), Color.white, 0f); // Dibuja un raycast blanco si no golpea nada
+                timeToWallUnstick = wallStickTime;
             }
         }
     }
 
+    // Función para manejar los saltos del jugador, tanto en el suelo como en las paredes
+    void HandleJumping(Vector2 input, int wallDirX)
+    {
+        // Detectar si el jugador presiona la tecla de salto
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // Si el jugador está tocando una pared, manejar los diferentes tipos de saltos en pared
+            if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below)
+            {
+                if (wallDirX == input.x)  // Si el jugador intenta saltar en la dirección de la pared
+                {
+                    velocity.x = -wallDirX * wallJumpClimb.x;
+                    velocity.y = wallJumpClimb.y;
+                }
+                else if (input.x == 0)  // Si el jugador no está moviéndose horizontalmente
+                {
+                    velocity.x = -wallDirX * wallJumpOff.x;
+                    velocity.y = wallJumpOff.y;
+                }
+                else  // Si el jugador salta en dirección opuesta a la pared
+                {
+                    velocity.x = -wallDirX * wallLeap.x;
+                    velocity.y = wallLeap.y;
+                }
+            }
 
+            // Si el jugador está en el suelo, realizar un salto normal
+            if (controller.collisions.below)
+            {
+                velocity.y = maxJumpVelocity;
+            }
+        }
+
+        // Si el jugador suelta la tecla de salto, reducir la altura del salto
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (velocity.y > minJumpVelocity)
+            {
+                velocity.y = minJumpVelocity;
+            }
+        }
+    }
+
+    // Función para detectar enemigos usando raycast en 360 grados
+    void DetectEnemies360()
+    {
+        int numberOfRays = 8;  // Número de rayos emitidos en diferentes direcciones
+        float angleStep = 360f / numberOfRays;  // Ángulo entre cada rayo
+
+        for (int i = 0; i < numberOfRays; i++)
+        {
+            // Calcular la dirección de cada rayo basado en el ángulo
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            // Disparar el rayo y verificar si impacta con un enemigo
+            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, direction, raycastDistance, enemyLayer);
+
+            // Si el rayo impacta un enemigo, dibujar una línea en la escena dependiendo de la distancia al enemigo
+            if (hit.collider != null)
+            {
+                float distanceToEnemy = Vector2.Distance(firePoint.position, hit.point);
+
+                if (distanceToEnemy <= 2f)  // Si el enemigo está cerca, dibujar línea roja
+                {
+                    Debug.DrawLine(firePoint.position, hit.point, Color.red, 0f);
+                }
+                else  // Si el enemigo está lejos, dibujar línea amarilla
+                {
+                    Debug.DrawLine(firePoint.position, hit.point, Color.yellow, 0f);
+                }
+            }
+            else
+            {
+                // Si el rayo no impacta, dibujar una línea blanca
+                Debug.DrawLine(firePoint.position, firePoint.position + (Vector3)(direction * raycastDistance), Color.white, 0f);
+            }
+        }
+    }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 900655698003414712}
   - component: {fileID: 900655698003414713}
+  - component: {fileID: 521575705736900520}
   - component: {fileID: 900655698003414718}
   - component: {fileID: 900655698003414719}
   - component: {fileID: 900655698003414716}
@@ -46,9 +47,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a1fa77dfa3bd2419bc06236e4195d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 7
-  isGrounded: 1
+  maxJumpHeight: 4
+  minJumpHeight: 1
+  timeToJumpApex: 0.4
+  wallJumpClimb: {x: 0, y: 0}
+  wallJumpOff: {x: 0, y: 0}
+  wallLeap: {x: 0, y: 0}
+  wallSlideSpeedMax: 3
+  wallStickTime: 0.25
+  firePoint: {fileID: 0}
+  longDistance: 10
+  shortDistance: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 10
+--- !u!114 &521575705736900520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900655698003414717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612cf36476441b243a9db82ff2e2d9af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  horizontalRaySpacing: 0
+  verticalRaySpacing: 0
+  collider: {fileID: 0}
+  playerInput: {x: 0, y: 0}
 --- !u!212 &900655698003414718
 SpriteRenderer:
   m_ObjectHideFlags: 0
