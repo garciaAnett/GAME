@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Controller2D))]
+[RequireComponent(typeof(RaycastController))] //asegurar que un componente necesario esté siempre presente 
 public class Player : MonoBehaviour
 {
+    private AudioSource m_AudioSource; // Referencia al componente de AudioSource
     // Parámetros de movimiento del jugador
     public float maxJumpHeight = 4;  // Altura máxima que puede alcanzar el jugador al saltar
     public float minJumpHeight = 1;  // Altura mínima al hacer un salto corto
@@ -28,6 +30,9 @@ public class Player : MonoBehaviour
     float velocityXSmoothing;  // Suavizado de la velocidad en el eje X para hacer el movimiento más fluido
 
     Controller2D controller;  // Referencia al componente que controla las colisiones del jugador
+                              //declarando la clase Collider2D
+
+    RaycastController controller2d;
 
     // Parámetros para la detección de enemigos con raycasts
     public Transform firePoint;  // Punto desde donde se originan los rayos para la detección de enemigos
@@ -38,9 +43,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        m_AudioSource = GetComponent<AudioSource>();
+        
         // Inicialización del componente y cálculos iniciales
         controller = GetComponent<Controller2D>();
-
+        //otro
+        controller2d = GetComponent<RaycastController>(); // asignando su clase correspondiente
         // Calcular la gravedad y las velocidades de salto según la altura máxima y mínima del salto
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -191,6 +199,41 @@ public class Player : MonoBehaviour
                 // Si el rayo no impacta, dibujar una línea blanca
                 Debug.DrawLine(firePoint.position, firePoint.position + (Vector3)(direction * raycastDistance), Color.white, 0f);
             }
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Flag"))
+        {
+            m_AudioSource.Stop();
+            // Aquí puedes implementar lo que sucede cuando Mario colisiona con el enemigo.
+            // Ejemplo: Mario pierde una vida o muere.
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 knockbackDirection;
+
+            // Si el enemigo está a la izquierda, empuja al jugador hacia la derecha
+            if (collision.transform.position.x < transform.position.x)
+            {
+                knockbackDirection = new Vector2(1, 0); // Hacia la derecha
+            }
+            // Si el enemigo está a la derecha, empuja al jugador hacia la izquierda
+            else
+            {
+                knockbackDirection = new Vector2(-1, 0); // Hacia la izquierda
+            }
+
+            float knockbackForce = 10f; // Ajusta esta fuerza según sea necesario
+            velocity.x = knockbackDirection.x * knockbackForce;
+
+            // Si quieres también un pequeño empuje hacia arriba al ser golpeado:
+            velocity.y = 5f; // Ajusta según sea necesario
+
+            // Aplicar la fuerza de retroceso al jugador
+            controller.Move(velocity * Time.deltaTime, Vector2.zero);
+            Debug.Log("Si esta chocando");
+            m_AudioSource.Play();
         }
     }
 }
